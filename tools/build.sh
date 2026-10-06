@@ -42,7 +42,6 @@ echo "$FOSS_SHA  $WORK/foss.apk" | sha256sum -c - >/dev/null
 echo "==> repack"
 python3 "$REPO/tools/repack.py" --orig "$APK_IN" \
   --dex1 "$WORK/classes.dex" --dex2 "$WORK/classes2.dex" --dex3 "$WORK/classes3.dex" \
-  --manifest-b64 "$REPO/assets/AndroidManifest-noemoji.b64" \
   --native-apk "$WORK/foss.apk" --out "$WORK/unsigned.apk"
 KS="${KEYSTORE:-$REPO/debug.keystore}"
 if [ ! -f "$KS" ]; then

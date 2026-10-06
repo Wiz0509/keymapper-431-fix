@@ -11,7 +11,6 @@ This repo contains **no APK** — you build from your own copy.
 - No black press animation, forced normal alpha, silenced spammy logs.
 - Stop service: notification removed, process killed cleanly, no auto-resurrect.
 - Notification visibility follows actual service state.
-- EmojiCompat startup init removed.
 
 See `patches/` (20 patch files) + `new-files/` (4 new files) for every change.
 `patches/17-tc-t-unlock.patch` is the premium unlock — the one risky piece.
@@ -70,4 +69,4 @@ for exact download locations of every tool.
 - No APK and no signing keys are included — everyone builds with their own key.
 - Native libs (`lib/arm64-v8a/*.so`) are **not** in the Play APK, so the script
   downloads the official FOSS 4.3.1 release and takes them from there
-  (checksum-verified). The EmojiCompat-removal manifest template ships in `assets/`.
+  (checksum-verified).

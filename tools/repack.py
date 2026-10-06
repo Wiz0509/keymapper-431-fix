@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
-"""Repack: swap classes*.dex + AndroidManifest into a copy of the original APK,
-preserving every other entry byte-for-byte (names, compress types, .so, arsc).
+"""Repack: swap classes*.dex into a copy of the original APK,
+preserving every other entry byte-for-byte, plus native libs from FOSS APK.
 SPDX-License-Identifier: GPL-3.0-or-later"""
 import argparse
-import base64
 import zipfile
 
 p = argparse.ArgumentParser()
@@ -11,7 +10,6 @@ p.add_argument("--orig", required=True)
 p.add_argument("--dex1", required=True)
 p.add_argument("--dex2", required=True)
 p.add_argument("--dex3", required=True)
-p.add_argument("--manifest-b64", required=True)
 p.add_argument("--native-apk", required=True,
                help="FOSS APK to take lib/arm64-v8a/*.so from (Play APK has none)")
 p.add_argument("--out", required=True)
@@ -28,9 +26,6 @@ with open(a.dex2, "rb") as f:
     items["classes2.dex"] = (f.read(), items["classes2.dex"][1])
 with open(a.dex3, "rb") as f:
     items["classes3.dex"] = (f.read(), items["classes3.dex"][1])
-with open(a.manifest_b64, "rb") as f:
-    man = base64.b64decode(f.read())
-items["AndroidManifest.xml"] = (man, zipfile.ZIP_DEFLATED)
 
 import os
 nz = zipfile.ZipFile(a.native_apk)
