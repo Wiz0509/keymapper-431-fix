@@ -1,1 +1,108 @@
-FULL_PATCH_PLACEHOLDER
+diff -ruN apktool-clean/smali/e1/bd.smali apktool-f58/smali/e1/bd.smali
+--- a/smali/e1/bd.smali
++++ b/smali/e1/bd.smali
+@@ -2607,7 +2607,7 @@
+ .end method
+ 
+ .method public final invokeSuspend(Ljava/lang/Object;)Ljava/lang/Object;
+-    .locals 24
++    .locals 27
+ 
+     .line 1
+     move-object/from16 v1, p0
+@@ -3780,6 +3780,77 @@
+     .line 583
+     .line 584
+     iget v6, v10, Lfb/g;->e:I
++    if-lez v6, :e1_digits
++    goto :e1_done
++    :e1_digits
++    const/16 v15, 0x7
++    if-lt v3, v15, :e1_letters
++    const/16 v15, 0x10
++    if-gt v3, v15, :e1_letters
++    add-int/lit8 v15, v3, -0x7
++    const-string v6, "\u000b\u0002\u0003\u0004\u0005\u0006\u0007\u0008\u0009\u000a"
++    invoke-virtual {v6, v15}, Ljava/lang/String;->charAt(I)C
++    move-result v6
++    goto :e1_done
++    :e1_letters
++    const/16 v15, 0x1d
++    if-lt v3, v15, :e1_sparse
++    const/16 v15, 0x36
++    if-gt v3, v15, :e1_sparse
++    add-int/lit8 v15, v3, -0x1d
++    const-string v6, "\u001e\u0030\u002e\u0020\u0012\u0021\u0022\u0023\u0017\u0024\u0025\u0026\u0032\u0031\u0018\u0019\u0010\u0013\u001f\u0014\u0016\u002f\u0011\u002d\u0015\u002c"
++    invoke-virtual {v6, v15}, Ljava/lang/String;->charAt(I)C
++    move-result v6
++    goto :e1_done
++    :e1_sparse
++    sparse-switch v3, :e1_data
++    goto :e1_done
++    :e1_sb0
++    const/16 v6, 0x67
++    goto :e1_done
++    :e1_sb1
++    const/16 v6, 0x6c
++    goto :e1_done
++    :e1_sb2
++    const/16 v6, 0x69
++    goto :e1_done
++    :e1_sb3
++    const/16 v6, 0x6a
++    goto :e1_done
++    :e1_sb4
++    const/16 v6, 0x38
++    goto :e1_done
++    :e1_sb5
++    const/16 v6, 0x64
++    goto :e1_done
++    :e1_sb6
++    const/16 v6, 0x2a
++    goto :e1_done
++    :e1_sb7
++    const/16 v6, 0x36
++    goto :e1_done
++    :e1_sb8
++    const/16 v6, 0xf
++    goto :e1_done
++    :e1_sb9
++    const/16 v6, 0x39
++    goto :e1_done
++    :e1_sb10
++    const/16 v6, 0x1c
++    goto :e1_done
++    :e1_sb11
++    const/16 v6, 0xe
++    goto :e1_done
++    :e1_sb12
++    const/16 v6, 0x1
++    goto :e1_done
++    :e1_sb13
++    const/16 v6, 0x1d
++    goto :e1_done
++    :e1_sb14
++    const/16 v6, 0x61
++    goto :e1_done
++    :e1_done
+ 
+     .line 585
+     .line 586
+@@ -3804,6 +3875,17 @@
+     .line 595
+     move/from16 v17, v3
+ 
++    move/16 v24, v17
++    move-wide/16 v25, v12
++    if-eqz v16, :dt_put_e1
++    invoke-static/range {v24 .. v26}, Lkm/downtime;->get(IJ)J
++    move-result-wide v12
++    invoke-static/range {v24 .. v24}, Lkm/downtime;->remove(I)V
++    goto :dt_done_e1
++    :dt_put_e1
++    invoke-static/range {v24 .. v26}, Lkm/downtime;->put(IJ)V
++    :dt_done_e1
++
+     .line 596
+     .line 597
+     move/from16 v19, v4
