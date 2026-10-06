@@ -1,0 +1,158 @@
+diff -ruN apktool-clean/smali_classes3/fb/r.smali apktool-f58/smali_classes3/fb/r.smali
+--- a/smali_classes3/fb/r.smali
++++ b/smali_classes3/fb/r.smali
+@@ -1553,7 +1553,7 @@
+ .end method
+ 
+ .method public final c(Lfb/g;ZLpe/c;)Ljava/lang/Object;
+-    .locals 23
++    .locals 26
+ 
+     .line 1
+     move-object/from16 v0, p0
+@@ -1762,6 +1762,77 @@
+     .line 97
+     .line 98
+     iget v13, v3, Lfb/g;->e:I
++    if-lez v13, :fb_digits
++    goto :fb_done
++    :fb_digits
++    const/16 v14, 0x7
++    if-lt v1, v14, :fb_letters
++    const/16 v14, 0x10
++    if-gt v1, v14, :fb_letters
++    add-int/lit8 v14, v1, -0x7
++    const-string v13, "\u000b\u0002\u0003\u0004\u0005\u0006\u0007\u0008\u0009\u000a"
++    invoke-virtual {v13, v14}, Ljava/lang/String;->charAt(I)C
++    move-result v13
++    goto :fb_done
++    :fb_letters
++    const/16 v14, 0x1d
++    if-lt v1, v14, :fb_sparse
++    const/16 v14, 0x36
++    if-gt v1, v14, :fb_sparse
++    add-int/lit8 v14, v1, -0x1d
++    const-string v13, "\u001e\u0030\u002e\u0020\u0012\u0021\u0022\u0023\u0017\u0024\u0025\u0026\u0032\u0031\u0018\u0019\u0010\u0013\u001f\u0014\u0016\u002f\u0011\u002d\u0015\u002c"
++    invoke-virtual {v13, v14}, Ljava/lang/String;->charAt(I)C
++    move-result v13
++    goto :fb_done
++    :fb_sparse
++    sparse-switch v1, :fb_data
++    goto :fb_done
++    :fb_sb0
++    const/16 v13, 0x67
++    goto :fb_done
++    :fb_sb1
++    const/16 v13, 0x6c
++    goto :fb_done
++    :fb_sb2
++    const/16 v13, 0x69
++    goto :fb_done
++    :fb_sb3
++    const/16 v13, 0x6a
++    goto :fb_done
++    :fb_sb4
++    const/16 v13, 0x38
++    goto :fb_done
++    :fb_sb5
++    const/16 v13, 0x64
++    goto :fb_done
++    :fb_sb6
++    const/16 v13, 0x2a
++    goto :fb_done
++    :fb_sb7
++    const/16 v13, 0x36
++    goto :fb_done
++    :fb_sb8
++    const/16 v13, 0xf
++    goto :fb_done
++    :fb_sb9
++    const/16 v13, 0x39
++    goto :fb_done
++    :fb_sb10
++    const/16 v13, 0x1c
++    goto :fb_done
++    :fb_sb11
++    const/16 v13, 0xe
++    goto :fb_done
++    :fb_sb12
++    const/16 v13, 0x1
++    goto :fb_done
++    :fb_sb13
++    const/16 v13, 0x1d
++    goto :fb_done
++    :fb_sb14
++    const/16 v13, 0x61
++    goto :fb_done
++    :fb_done
+ 
+     .line 99
+     .line 100
+@@ -1786,6 +1857,17 @@
+     .line 109
+     move/from16 v16, v1
+ 
++    move/16 v23, v16
++    move-wide/16 v24, v11
++    if-eqz v15, :dt_put
++    invoke-static/range {v23 .. v25}, Lkm/downtime;->get(IJ)J
++    move-result-wide v11
++    invoke-static/range {v23 .. v23}, Lkm/downtime;->remove(I)V
++    goto :dt_done
++    :dt_put
++    invoke-static/range {v23 .. v25}, Lkm/downtime;->put(IJ)V
++    :dt_done
++
+     .line 110
+     .line 111
+     move/from16 v22, v3
+@@ -1942,6 +2024,15 @@
+ 
+     .line 187
+     .line 188
++    iget-object v10, v0, Lfb/r;->i:Lnf/k0;
++    iget-object v10, v10, Lnf/k0;->e:Lnf/y0;
++    invoke-interface {v10}, Lnf/y0;->getValue()Ljava/lang/Object;
++    move-result-object v10
++    check-cast v10, Ljava/lang/Boolean;
++    if-nez v10, :ime_log_skip
++    invoke-virtual {v10}, Ljava/lang/Boolean;->booleanValue()Z
++    move-result v10
++    if-nez v10, :ime_log_skip
+     new-instance v4, Ljava/lang/StringBuilder;
+ 
+     .line 189
+@@ -1973,6 +2064,8 @@
+     .line 203
+     .line 204
+     invoke-virtual {v1, v4, v10}, Lni/a;->b(Ljava/lang/String;[Ljava/lang/Object;)V
++    const/4 v10, 0x0
++    :ime_log_skip
+ 
+     .line 205
+     .line 206
+@@ -3867,6 +3960,24 @@
+     .line 2030
+     .line 2031
+     .line 2032
++    :fb_data
++    .sparse-switch
++        0x13 -> :fb_sb0
++        0x14 -> :fb_sb1
++        0x15 -> :fb_sb2
++        0x16 -> :fb_sb3
++        0x39 -> :fb_sb4
++        0x3a -> :fb_sb5
++        0x3b -> :fb_sb6
++        0x3c -> :fb_sb7
++        0x3d -> :fb_sb8
++        0x3e -> :fb_sb9
++        0x42 -> :fb_sb10
++        0x43 -> :fb_sb11
++        0x6f -> :fb_sb12
++        0x71 -> :fb_sb13
++        0x72 -> :fb_sb14
++    .end sparse-switch
+ .end method
+ 
+ .method public final e(Lfb/g;)Lec/x1;

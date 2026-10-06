@@ -1,0 +1,152 @@
+diff -ruN apktool-clean/smali_classes3/ob/j.smali apktool-f58/smali_classes3/ob/j.smali
+--- a/smali_classes3/ob/j.smali
++++ b/smali_classes3/ob/j.smali
+@@ -12,6 +12,7 @@
+ .field public f:I
+ 
+ .field public final synthetic g:Lob/m;
++.field public static s:Z
+ 
+ 
+ # direct methods
+@@ -674,7 +675,7 @@
+ .end method
+ 
+ .method public final invokeSuspend(Ljava/lang/Object;)Ljava/lang/Object;
+-    .locals 10
++    .locals 11
+ 
+     .line 1
+     iget v0, p0, Lob/j;->e:I
+@@ -937,7 +938,7 @@
+ 
+     .line 121
+     .line 122
+-    const-wide/16 v6, 0x7d0
++    const-wide/16 v6, 0x1388
+ 
+     .line 123
+     .line 124
+@@ -1028,7 +1029,32 @@
+     .line 163
+     :cond_b
+     :goto_5
++    iget-object v0, v8, Lob/m;->e:Landroid/content/Context;
++    const-class v1, Lio/github/sds100/keymapper/system/accessibility/MyAccessibilityService;
++    new-instance v2, Landroid/content/ComponentName;
++    invoke-direct {v2, v0, v1}, Landroid/content/ComponentName;-><init>(Landroid/content/Context;Ljava/lang/Class;)V
++    invoke-virtual {v0}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
++    move-result-object v0
++    invoke-virtual {v0, v2}, Landroid/content/pm/PackageManager;->getComponentEnabledSetting(Landroid/content/ComponentName;)I
++    move-result v0
++    const/4 v1, 0x2
++    if-ne v0, v1, :do_restart_b
++    goto :cond_c
++    :do_restart_b
++    iget-object v0, v8, Lob/m;->b:Lud/i;
++    sget-object v1, Lud/h;->j:Lud/h;
++    check-cast v0, Lud/g;
++    invoke-virtual {v0, v1}, Lud/g;->b(Lud/h;)Z
++    move-result v0
++    if-eqz v0, :wss_skip4
+     invoke-virtual {v8}, Lob/m;->b()V
++    const/4 v1, 0x2
++    goto :cond_c
++    :wss_skip4
++    const-string v0, "KMENB skip no-WSS"
++    invoke-static {v0, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
++    const/4 v0, 0x0
++    const/4 v1, 0x2
+ 
+     .line 164
+     .line 165
+@@ -1259,7 +1285,7 @@
+ 
+     .line 267
+     .line 268
+-    invoke-virtual {p1, v3, v1}, Lni/a;->b(Ljava/lang/String;[Ljava/lang/Object;)V
++    nop
+ 
+     .line 269
+     .line 270
+@@ -1385,6 +1411,10 @@
+     .line 325
+     .line 326
+     .line 327
++    sget-boolean v1, Lob/j;->s:Z
++    if-nez v1, :go_a
++    goto :goto_d
++    :go_a
+     iput v4, p0, Lob/j;->f:I
+ 
+     .line 328
+@@ -1431,7 +1461,69 @@
+     .line 347
+     :cond_19
+     :goto_d
++    sget-boolean v0, Lob/j;->s:Z
++    const/4 v1, 0x0
++    sput-boolean v1, Lob/j;->s:Z
++    if-eqz v0, :do_enable_e1
++    const-string v0, "KMKILL branch"
++    invoke-static {v0, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
++    move-result v0
++    iget-object v0, v2, Lob/m;->e:Landroid/content/Context;
++    const-class v1, Landroid/app/NotificationManager;
++    invoke-virtual {v0, v1}, Landroid/content/Context;->getSystemService(Ljava/lang/Class;)Ljava/lang/Object;
++    move-result-object v0
++    check-cast v0, Landroid/app/NotificationManager;
++    invoke-virtual {v0}, Landroid/app/NotificationManager;->cancelAll()V
++    iget-object v0, v2, Lob/m;->e:Landroid/content/Context;
++    const-class v1, Lio/github/sds100/keymapper/system/accessibility/MyAccessibilityService;
++    new-instance v2, Landroid/content/ComponentName;
++    invoke-direct {v2, v0, v1}, Landroid/content/ComponentName;-><init>(Landroid/content/Context;Ljava/lang/Class;)V
++    invoke-virtual {v0}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
++    move-result-object v0
++    const/4 v1, 0x2
++    const/4 v10, 0x1
++    invoke-virtual {v0, v2, v1, v10}, Landroid/content/pm/PackageManager;->setComponentEnabledSetting(Landroid/content/ComponentName;II)V
++    invoke-virtual {v0, v2}, Landroid/content/pm/PackageManager;->getComponentEnabledSetting(Landroid/content/ComponentName;)I
++    move-result v0
++    invoke-static {v0}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
++    move-result-object v0
++    const-string v1, "KMKILL dis"
++    invoke-static {v1, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
++    move-result v1
++    iget-object v2, p0, Lob/j;->g:Lob/m;
++    iget-object v4, v2, Lob/m;->a:Lkf/v;
++    const/4 v0, 0x0
++    const/4 v10, 0x1
++    new-instance v3, Lob/j;
++    invoke-direct {v3, v2, v0, v10}, Lob/j;-><init>(Lob/m;Lne/c;I)V
++    const/4 v1, 0x3
++    invoke-static {v4, v0, v0, v3, v1}, Lkf/y;->v(Lkf/v;Lne/i;Lkf/w;Lxe/d;I)Lkf/o1;
++    iget-object v0, v2, Lob/m;->e:Landroid/content/Context;
++    new-instance v10, Lkm/stopfin;
++    invoke-direct {v10, v0}, Lkm/stopfin;-><init>(Landroid/content/Context;)V
++    invoke-static {}, Landroid/os/Looper;->getMainLooper()Landroid/os/Looper;
++    move-result-object v0
++    new-instance v2, Landroid/os/Handler;
++    invoke-direct {v2, v0}, Landroid/os/Handler;-><init>(Landroid/os/Looper;)V
++    const-wide/16 v0, 0x1388
++    invoke-virtual {v2, v10, v0, v1}, Landroid/os/Handler;->postDelayed(Ljava/lang/Runnable;J)Z
++    const/4 v3, 0x0
++    const/4 v4, 0x0
++    const/4 v10, 0x0
++    sget-object v0, Lje/a0;->a:Lje/a0;
++    goto :goto_e
++    :do_enable_e1
++    iget-object v0, v2, Lob/m;->b:Lud/i;
++    sget-object v1, Lud/h;->j:Lud/h;
++    check-cast v0, Lud/g;
++    invoke-virtual {v0, v1}, Lud/g;->b(Lud/h;)Z
++    move-result v0
++    if-eqz v0, :restart_nowss
+     invoke-virtual {v2}, Lob/m;->b()V
++    sget-object v0, Lje/a0;->a:Lje/a0;
++    goto :goto_e
++    :restart_nowss
++    sget-object v0, Lje/a0;->a:Lje/a0;
+ 
+     .line 348
+     .line 349
