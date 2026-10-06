@@ -20,7 +20,7 @@ See `patches/` (20 patch files) + `new-files/` (4 new files) for every change.
 - The **premium unlock** patch bypasses the original app's payment. Building = your
   responsibility (Play ToS violation, risk to your Google account). The repo author
   takes no responsibility.
-- Tested on **one device + Shizuku**. Other devices, Android versions, or IME mode may differ.
+- Tested on **one device + [Shizuku](https://shizuku.rikka.app)**. Other devices, Android versions, or IME mode may differ.
 - Your build uses **your own key** → it **cannot install over** the Play version
   (different signature): export your keymaps in the original app first, uninstall it,
   then install this build. Switching build source/key later also requires reinstall.
@@ -65,8 +65,8 @@ for exact download locations of every tool.
 
 ## License / origin
 
-- Original app: Key Mapper by sds100 (GPL-3.0). Patches here are released under GPL-3.0.
+- Original app: [Key Mapper](https://github.com/sds100/KeyMapper) by [sds100](https://github.com/sds100) (GPL-3.0). Patches here are released under GPL-3.0.
 - No APK and no signing keys are included — everyone builds with their own key.
 - Native libs (`lib/arm64-v8a/*.so`) are **not** in the Play APK, so the script
-  downloads the official FOSS 4.3.1 release and takes them from there
+  downloads the [official FOSS 4.3.1 release](https://github.com/keymapperorg/KeyMapper/releases/tag/v4.3.1) and takes them from there
   (checksum-verified).
