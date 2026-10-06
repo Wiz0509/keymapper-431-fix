@@ -13,7 +13,8 @@ This repo contains **no APK** — you build from your own copy.
 - Notification visibility follows actual service state.
 - EmojiCompat startup init removed.
 
-See `patches/all.patch` (24 files) for every change.
+See `patches/` (20 patch files) + `new-files/` (4 new files) for every change.
+`patches/17-tc-t-unlock.patch` is the premium unlock — the one risky piece.
 
 ## ⚠️ USE AT YOUR OWN RISK
 

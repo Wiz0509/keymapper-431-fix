@@ -19,8 +19,13 @@ WORK="$(mktemp -d)"
 trap 'rm -rf "$WORK"' EXIT
 echo "==> decode"
 apktool d "$APK_IN" -o "$WORK/src" >/dev/null
-echo "==> patch (24 files)"
-patch -d "$WORK/src" -p1 --no-backup-if-mismatch < "$REPO/patches/all.patch"
+echo "==> patch (20 files)"
+for p in "$REPO"/patches/*.patch; do
+  patch -d "$WORK/src" -p1 --no-backup-if-mismatch < "$p" || exit 1
+done
+echo "==> new files (km/)"
+mkdir -p "$WORK/src/smali_classes3/km"
+cp "$REPO"/new-files/smali_classes3/km/*.smali "$WORK/src/smali_classes3/km/"
 if grep -rn "KMDT" "$WORK/src/smali_classes3/fb/r.smali" | grep -q .; then
   echo "diag remnants found, abort"; exit 1
 fi
