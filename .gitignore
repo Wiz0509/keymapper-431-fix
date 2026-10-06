@@ -1,0 +1,5 @@
+*.apk
+*.dex
+*.keystore
+work/
+.DS_Store

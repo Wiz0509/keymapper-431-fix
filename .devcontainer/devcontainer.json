@@ -1,0 +1,5 @@
+{
+  "name": "keymapper-patch",
+  "image": "mcr.microsoft.com/devcontainers/java:21",
+  "postCreateCommand": "bash .devcontainer/postCreate.sh"
+}
