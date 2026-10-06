@@ -1,0 +1,47 @@
+diff -ruN apktool-clean/smali_classes3/ni/a.smali apktool-f58/smali_classes3/ni/a.smali
+--- a/smali_classes3/ni/a.smali
++++ b/smali_classes3/ni/a.smali
+@@ -89,6 +89,10 @@
+     .locals 5
+ 
+     .line 1
++    sget-boolean v0, Lhb/i;->s:Z
++    if-nez v0, :dbg_gate
++    return-void
++    :dbg_gate
+     const-string v0, "args"
+ 
+     .line 2
+@@ -506,6 +510,10 @@
+     .locals 5
+ 
+     .line 1
++    sget-boolean v0, Lhb/i;->s:Z
++    if-nez v0, :dbg_gate_d
++    return-void
++    :dbg_gate_d
+     const-string v0, "args"
+ 
+     .line 2
+@@ -718,6 +726,10 @@
+     .locals 5
+ 
+     .line 1
++    sget-boolean v0, Lhb/i;->s:Z
++    if-nez v0, :dbg_gate_f
++    return-void
++    :dbg_gate_f
+     const-string v0, "args"
+ 
+     .line 2
+@@ -1401,6 +1413,10 @@
+     .locals 5
+ 
+     .line 1
++    sget-boolean v0, Lhb/i;->s:Z
++    if-nez v0, :dbg_gate_j
++    return-void
++    :dbg_gate_j
+     const-string v0, "args"
+ 
+     .line 2

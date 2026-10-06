@@ -1,0 +1,22 @@
+diff -ruN apktool-clean/smali_classes3/io/github/sds100/keymapper/KeyMapperApp.smali apktool-f58/smali_classes3/io/github/sds100/keymapper/KeyMapperApp.smali
+--- a/smali_classes3/io/github/sds100/keymapper/KeyMapperApp.smali
++++ b/smali_classes3/io/github/sds100/keymapper/KeyMapperApp.smali
+@@ -132,7 +132,17 @@
+ .end method
+ 
+ .method public final onCreate()V
+-    .locals 2
++    .locals 4
++
++    invoke-static {}, Ljava/lang/Thread;->getDefaultUncaughtExceptionHandler()Ljava/lang/Thread$UncaughtExceptionHandler;
++
++    move-result-object v2
++
++    new-instance v3, Lkm/crash;
++
++    invoke-direct {v3, p0, v2}, Lkm/crash;-><init>(Landroid/content/Context;Ljava/lang/Thread$UncaughtExceptionHandler;)V
++
++    invoke-static {v3}, Ljava/lang/Thread;->setDefaultUncaughtExceptionHandler(Ljava/lang/Thread$UncaughtExceptionHandler;)V
+ 
+     .line 1
+     iget-boolean v0, p0, Lio/github/sds100/keymapper/KeyMapperApp;->v:Z

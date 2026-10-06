@@ -1,0 +1,43 @@
+diff -ruN apktool-clean/smali_classes3/nc/y0.smali apktool-f58/smali_classes3/nc/y0.smali
+--- a/smali_classes3/nc/y0.smali
++++ b/smali_classes3/nc/y0.smali
+@@ -403,6 +403,8 @@
+ 
+     .line 138
+     .line 139
++    sget-boolean v0, Lhb/i;->s:Z
++    if-nez v0, :y0_logskip_t_p
+     sget-object v0, Lni/c;->a:Lni/a;
+ 
+     .line 140
+@@ -438,6 +440,10 @@
+     .line 154
+     .line 155
+     invoke-virtual {v0, v3, v4}, Lni/a;->b(Ljava/lang/String;[Ljava/lang/Object;)V
++    goto :y0_logskip_p
++    :y0_logskip_t_p
++    sget-object v0, Lni/c;->a:Lni/a;
++    :y0_logskip_p
+ 
+     .line 156
+     .line 157
+@@ -518,6 +524,8 @@
+ 
+     .line 193
+     .line 194
++    sget-boolean v0, Lhb/i;->s:Z
++    if-nez v0, :y0_logskip_t_o
+     sget-object v0, Lni/c;->a:Lni/a;
+ 
+     .line 195
+@@ -553,6 +561,10 @@
+     .line 209
+     .line 210
+     invoke-virtual {v0, v3, v4}, Lni/a;->b(Ljava/lang/String;[Ljava/lang/Object;)V
++    goto :y0_logskip_o
++    :y0_logskip_t_o
++    sget-object v0, Lni/c;->a:Lni/a;
++    :y0_logskip_o
+ 
+     .line 211
+     .line 212

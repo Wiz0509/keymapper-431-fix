@@ -1,0 +1,20 @@
+diff -ruN apktool-clean/smali_classes3/ob/z.smali apktool-f58/smali_classes3/ob/z.smali
+--- a/smali_classes3/ob/z.smali
++++ b/smali_classes3/ob/z.smali
+@@ -392,6 +392,16 @@
+     .line 17
+     .line 18
+     const-string v3, "Restarting service with WRITE_SECURE_SETTINGS"
++    iget-object v1, v0, Lob/m;->e:Landroid/content/Context;
++    const-class v3, Lio/github/sds100/keymapper/system/accessibility/MyAccessibilityService;
++    new-instance v4, Landroid/content/ComponentName;
++    invoke-direct {v4, v1, v3}, Landroid/content/ComponentName;-><init>(Landroid/content/Context;Ljava/lang/Class;)V
++    invoke-virtual {v1}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
++    move-result-object v1
++    const/4 v3, 0x1
++    invoke-virtual {v1, v4, v3, v3}, Landroid/content/pm/PackageManager;->setComponentEnabledSetting(Landroid/content/ComponentName;II)V
++    sget-object v1, Lni/c;->a:Lni/a;
++    const-string v3, "Restarting service with WRITE_SECURE_SETTINGS"
+ 
+     .line 19
+     .line 20

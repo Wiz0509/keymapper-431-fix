@@ -1,0 +1,29 @@
+diff -ruN apktool-clean/smali_classes3/nc/h.smali apktool-f58/smali_classes3/nc/h.smali
+--- a/smali_classes3/nc/h.smali
++++ b/smali_classes3/nc/h.smali
+@@ -3450,6 +3450,10 @@
+ 
+     .line 297
+     .line 298
++    const/4 v2, 0x1
++    const-string v4, "KMSTOP7 enter"
++    invoke-static {v4, v4}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
++    move-result v4
+     new-instance v4, Lob/j;
+ 
+     .line 299
+@@ -3460,7 +3464,13 @@
+     .line 302
+     .line 303
+     invoke-static {v3, v6, v6, v4, v5}, Lkf/y;->v(Lkf/v;Lne/i;Lkf/w;Lxe/d;I)Lkf/o1;
+-
++    const/4 v4, 0x1
++    sput-boolean v4, Lob/j;->s:Z
++    iget-object v4, v8, Lub/f;->c:Lgb/t1;
++    iget-object v4, v4, Lgb/t1;->a:Llc/a;
++    sget-object v6, Lfc/b;->X:Lg5/b;
++    sget-object v0, Ljava/lang/Boolean;->TRUE:Ljava/lang/Boolean;
++    invoke-interface {v4, v6, v0}, Llc/a;->a(Lg5/b;Ljava/lang/Object;)V
+     .line 304
+     .line 305
+     .line 306
