@@ -1,0 +1,12 @@
+diff -ruN apktool-clean/smali_classes3/ac/x.smali apktool-f58/smali_classes3/ac/x.smali
+--- a/smali_classes3/ac/x.smali
++++ b/smali_classes3/ac/x.smali
+@@ -1544,7 +1544,7 @@
+ 
+     move-result v8
+ 
+-    if-nez v8, :cond_1c
++    goto :cond_1c
+ 
+     .line 193
+     invoke-static {v5, v1, v3}, Lv/w0;->a(Lx1/r;Lz/k;Lv/z0;)Lx1/r;

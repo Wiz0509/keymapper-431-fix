@@ -1,0 +1,12 @@
+diff -ruN apktool-clean/smali_classes3/ab/v0.smali apktool-f58/smali_classes3/ab/v0.smali
+--- a/smali_classes3/ab/v0.smali
++++ b/smali_classes3/ab/v0.smali
+@@ -2064,7 +2064,7 @@
+ 
+     .line 166
+     .line 167
+-    if-eqz v0, :cond_6
++    goto :cond_6
+ 
+     .line 168
+     .line 169

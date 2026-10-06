@@ -1,0 +1,21 @@
+diff -ruN apktool-clean/smali_classes3/ub/f.smali apktool-f58/smali_classes3/ub/f.smali
+--- a/smali_classes3/ub/f.smali
++++ b/smali_classes3/ub/f.smali
+@@ -1389,7 +1389,7 @@
+     move-result v1
+ 
+     .line 202
+-    if-eqz v1, :cond_5
++    goto :cond_5
+ 
+     .line 203
+     .line 204
+@@ -1574,7 +1574,7 @@
+     move-result v1
+ 
+     .line 296
+-    if-eqz v1, :cond_7
++    goto :cond_7
+ 
+     .line 297
+     .line 298

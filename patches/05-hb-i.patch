@@ -1,0 +1,46 @@
+diff -ruN apktool-clean/smali_classes3/hb/i.smali apktool-f58/smali_classes3/hb/i.smali
+--- a/smali_classes3/hb/i.smali
++++ b/smali_classes3/hb/i.smali
+@@ -9,6 +9,7 @@
+ .field public final c:Lnf/k0;
+ 
+ .field public final d:Lnf/o0;
++.field public static s:Z
+ 
+ 
+ # direct methods
+@@ -373,6 +374,11 @@
+     move-result-object v1
+ 
+     .line 14
++    if-nez v1, :hb_has
++    const/4 v1, 0x0
++    sput-boolean v1, Lhb/i;->s:Z
++    goto :hb_after
++    :hb_has
+     check-cast v1, Ljava/lang/Boolean;
+ 
+     .line 15
+@@ -383,6 +389,8 @@
+     .line 18
+     .line 19
+     move-result v1
++    sput-boolean v1, Lhb/i;->s:Z
++    :hb_after
+ 
+     .line 20
+     const/4 v2, 0x4
+@@ -402,11 +410,11 @@
+     const/4 v1, 0x5
+ 
+     .line 27
+-    if-eq p1, v1, :cond_0
++
+ 
+     .line 28
+     .line 29
+-    if-eq p1, v2, :cond_0
++
+ 
+     .line 30
+     .line 31

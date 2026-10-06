@@ -1,0 +1,12 @@
+diff -ruN apktool-clean/smali_classes3/nc/x0.smali apktool-f58/smali_classes3/nc/x0.smali
+--- a/smali_classes3/nc/x0.smali
++++ b/smali_classes3/nc/x0.smali
+@@ -1179,7 +1179,7 @@
+     move-result-object v6
+ 
+     .line 93
+-    if-ne v6, v0, :cond_5
++    goto :cond_5
+ 
+     .line 94
+     .line 95

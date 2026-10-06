@@ -1,0 +1,12 @@
+diff -ruN apktool-clean/smali_classes3/nc/q2.smali apktool-f58/smali_classes3/nc/q2.smali
+--- a/smali_classes3/nc/q2.smali
++++ b/smali_classes3/nc/q2.smali
+@@ -6333,7 +6333,7 @@
+ 
+     .line 267
+     .line 268
+-    if-eqz v15, :cond_13
++    goto :cond_13
+ 
+     .line 269
+     .line 270

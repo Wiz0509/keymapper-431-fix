@@ -1,0 +1,21 @@
+diff -ruN apktool-clean/smali_classes3/ka/n.smali apktool-f58/smali_classes3/ka/n.smali
+--- a/smali_classes3/ka/n.smali
++++ b/smali_classes3/ka/n.smali
+@@ -303,7 +303,16 @@
+ 
+ # virtual methods
+ .method public final a()V
+-    .locals 11
++    .locals 15
++
++    new-instance v11, Lkm/buildtag;
++    invoke-direct {v11}, Lkm/buildtag;-><init>()V
++    invoke-static {}, Landroid/os/Looper;->getMainLooper()Landroid/os/Looper;
++    move-result-object v13
++    new-instance v12, Landroid/os/Handler;
++    invoke-direct {v12, v13}, Landroid/os/Handler;-><init>(Landroid/os/Looper;)V
++    const-wide/16 v13, 0xbb8
++    invoke-virtual {v12, v11, v13, v14}, Landroid/os/Handler;->postDelayed(Ljava/lang/Runnable;J)Z
+ 
+     .line 1
+     iget-object v0, p0, Lka/n;->e:Ljava/lang/String;

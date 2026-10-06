@@ -1,0 +1,12 @@
+diff -ruN apktool-clean/smali_classes3/tc/t.smali apktool-f58/smali_classes3/tc/t.smali
+--- a/smali_classes3/tc/t.smali
++++ b/smali_classes3/tc/t.smali
+@@ -1185,7 +1185,7 @@
+ 
+     .line 21
+     :cond_0
+-    const/4 p0, 0x0
++    const/4 p0, 0x1
+ 
+     .line 22
+     return p0

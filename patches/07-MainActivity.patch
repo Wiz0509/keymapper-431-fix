@@ -1,0 +1,16 @@
+diff -ruN apktool-clean/smali_classes3/io/github/sds100/keymapper/MainActivity.smali apktool-f58/smali_classes3/io/github/sds100/keymapper/MainActivity.smali
+--- a/smali_classes3/io/github/sds100/keymapper/MainActivity.smali
++++ b/smali_classes3/io/github/sds100/keymapper/MainActivity.smali
+@@ -1156,6 +1156,12 @@
+     .line 156
+     invoke-virtual {p0, p1}, Lio/github/sds100/keymapper/MainActivity;->E(Landroid/content/Intent;)V
+ 
++    const/4 v0, 0x1
++
++    const-class v1, Lio/github/sds100/keymapper/system/accessibility/MyAccessibilityService;
++
++    invoke-static {p0, v0, v1}, Lio/github/sds100/keymapper/MainActivity;->C(Lio/github/sds100/keymapper/MainActivity;ZLjava/lang/Class;)V
++
+     .line 157
+     .line 158
+     .line 159
